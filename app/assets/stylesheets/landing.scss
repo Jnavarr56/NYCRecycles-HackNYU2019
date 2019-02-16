@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.btn-location {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,200%);
+
+}
 .landing.index {
     .container-fluid {
         height: 100%;
@@ -10,12 +17,117 @@
         .row {
             width: 100%;
             &:nth-child(1) {
-                height: 30%;
+                height: 35%;
                 @include flex-config(row, center, center);
+                &.push-up {
+                    position: relative;
+                    bottom: 0%;
+                }
+                .input-group {
+                    margin: 0;
+                    width: 60%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    animation: FadeInLandingInput .5s ease 1.35s 1 forwards;
+                    opacity: 0;
+                    filter: blur(10px);
+                    input {
+                        height: 100%;
+                        color: white;
+                        border-color: white;
+                        border-width: 2px;
+                        font-family: 'Poppins';
+                        background-color: transparent;
+                        &::placeholder {
+                            color: white;
+                            font-family: 'Poppins';
+                        }
+                    }
+                    input:focus {
+                        box-shadow: none !important;
+                    }
+                    .btn-search-bar {
+                        height: 100%;
+                        border-style: none;
+                        color: white;
+                        font-family: 'Poppins';
+                        &:not([disabled]):hover {
+                            background-color: #5D86E4;
+                            color: white;
+                        }
+                    }
+                    .btn-search-bar::before, .btn-search-bar::after{
+                        content:"";
+                        width: 0;
+                        height: 2px;
+                        position: absolute;
+                        transition: all 0.2s linear;
+                        background: white;
+                        width: 100%;
+                    } 
+                    .btn-search-text::before, .btn-search-text::after{
+                        content:"";
+                        width:2px;
+                        position: absolute;
+                        transition: all 0.2s linear;
+                        background: white;
+                        height: 100%;
+                    }
+                    .btn-search-bar:not([disabled]):hover::before, .btn-search-bar:not([disabled]):hover::after{
+                        width: 0%;
+                    }
+                    .btn-search-bar:not([disabled]):hover .btn-search-text::before, .btn-search-bar:not([disabled]):hover .btn-search-text::after{
+                        height: 0%;
+                    }
+                    .btn-search-bar::before, .btn-search-bar::after{
+                        transition-delay: 0s;
+                    }
+                    .btn-search-bar .btn-search-text::before, .btn-search-bar .btn-search-text::after{
+                        transition-delay: 0.2s;
+                    }
+                    .btn-search-bar::before{
+                        right: 0;
+                        top: 0;
+                    }
+                    .btn-search-bar::after{
+                        left: 0;
+                        bottom: 0;
+                    }
+                    .btn-search-bar .btn-search-text::before{
+                        left: 0;
+                        top: 0;
+                    }
+                    .btn-search-bar .btn-search-text::after{
+                        right: 0;
+                        bottom: 0;
+                    }
+                    .btn-search-bar:not([disabled])::hover::before, .btn-search-bar:hover::after{
+                        transition-delay: 0.2s;
+                    }
+                    .btn-search-bar:not([disabled])::hover .btn-search-text::before, .btn-search-bar:not([disabled])::hover .btn-search-text::after{
+                        transition-delay: 0s;
+                    }
+                }
+                div.input-group + div {
+                    top: 100%;
+                    width: 60%;
+                    margin: 0;
+                    margin-top: 4%;
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                }
             }
             &:nth-child(2) {
-                height: 50%;
+                height: 50%;   
             }
         }
+    }
+}
+@keyframes FadeInLandingInput {
+    100% {
+        opacity: 1;
+        filter: blur(0px);
     }
 }

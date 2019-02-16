@@ -15,12 +15,8 @@ html {
 body {
     overflow-y: scroll;
     margin: 0 auto;
-    background: linear-gradient(to right, #11FFBD, #AAFFA9);
-    //background: linear-gradient(to right, #12FFF7, #B3FFAB);
-    //background: linear-gradient(to right, #93F9B9, #1D976C);
-    //background: linear-gradient(to right, #38ef7d, #11998e);
-    //background-size: 400% 400%;
-    //animation: Gradient 15s ease infinite;
+    background: linear-gradient(to right, #92FE9D, #00C9FF);
+
 }
 @keyframes Gradient {
     0% {
@@ -48,15 +44,15 @@ body {
     span, i {
         display: inline-block;
         opacity: 0;
-        //filter: blur(10px);
-        transform: translate(0, -150%);
+        filter: blur(10px);
+        transform: translate(0, -50%);
         animation: PrimaryTextFallIn .25s ease 0s 1 forwards;
     }
 }
 @keyframes PrimaryTextFallIn {
     100% {
         opacity: 1;
-        //filter: blur(0px);
+        filter: blur(0px);
         transform: translate(0, 0);
     }
 }

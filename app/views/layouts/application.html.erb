@@ -13,13 +13,17 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
+    
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="<%= controller_name %> <%= action_name %>">
+    <div id="go" data-src=<%= ENV["GOOGLE_API_KEY"] %>></div>
     <div id="app-mounting-point">
       <%= yield %>
     </div>
+    
   </body>
 </html>
