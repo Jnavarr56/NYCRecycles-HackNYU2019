@@ -12,6 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     <Router>
       <Route path="/" component={LandingApp} />
     </Router>,
-    document.body.appendChild(document.createElement('app-mounting-point')),
+    document.getElementById('app-mounting-point')
   );
 });

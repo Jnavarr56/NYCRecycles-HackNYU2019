@@ -1,3 +1,21 @@
 // Place all the styles related to the Landing controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.landing.index {
+    .container-fluid {
+        height: 100%;
+        width: 100%;
+        @include flex-config(column, space-evenly, center);
+        .row {
+            width: 100%;
+            &:nth-child(1) {
+                height: 30%;
+                @include flex-config(row, center, center);
+            }
+            &:nth-child(2) {
+                height: 50%;
+            }
+        }
+    }
+}

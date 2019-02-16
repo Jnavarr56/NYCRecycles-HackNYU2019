@@ -1,11 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'
-import Test from './landing-components/Test';
+import LandingContainer from './landing-components/LandingContainer';
 
 class LandingApp extends React.Component {
 
     constructor(props) {
+
         super(props);
+        
     }
 
     render() {
@@ -13,8 +15,7 @@ class LandingApp extends React.Component {
         return (
 
             <Switch>
-                <Route exact path="/" render={() => <Test {...this.props} testLoc={"root"} /> } />
-                <Route exact path="/about" render={() => <Test {...this.props} testLoc={"about"} />} />
+                <Route exact path="/" render={() => <LandingContainer {...this.props} /> } />
             </Switch>
 
         );
