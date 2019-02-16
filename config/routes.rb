@@ -9,13 +9,19 @@ Rails.application.routes.draw do
   devise_scope :user do 
 
     unauthenticated do
+
       root :to => "landing#index"
+      get "/:anything" => "landing#index"
+
+      get "/source/:test_params" => "source#index"
+
     end
 
     authenticated do
-      root :to => "dashboard#index"
-    end
 
+      root :to => "dashboard#index"
+      
+    end
 
   end
 
