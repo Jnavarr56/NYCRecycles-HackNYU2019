@@ -25,7 +25,7 @@ class User < ApplicationRecord
     
       #end
 
-      user.skip_confirmation! # Don't require email confirmation for this new user.
+      #user.skip_confirmation! Don't require email confirmation for this new user, not needed because we do not have confirmable on.
 
       user.password = Devise.friendly_token[0,20] # Generate password for new user.
 
