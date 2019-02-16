@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       root :to => "landing#index"
       get "/:anything" => "landing#index"
 
-      post "/collection-source" => "source#collection_source"
+      post "/collection-source" => "source#collection_source_search"
       #post "/collection-source" => "source#index"
 
     end

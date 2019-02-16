@@ -58,6 +58,8 @@ export const parseAddressResponse = arr => {
 
 export const constructGeoclientParams = obj => {
 
+    console.log(obj);
+    
     const geoClientparams = {};
 
     for (let x = 0;  x < obj.address_components.length; x++) {

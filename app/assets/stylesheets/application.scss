@@ -56,7 +56,19 @@ body {
         transform: translate(0, 0);
     }
 }
+.fade-in {
+    opacity: 0;
+    filter: blur(10px);
+    animation: FadeIn .5s ease 0s 1 forwards;
+}
+@keyframes FadeIn {
 
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+    }
+
+}
 
 
 

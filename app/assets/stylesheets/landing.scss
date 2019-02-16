@@ -25,12 +25,13 @@
                 }
                 .input-group {
                     margin: 0;
+                    height: 60px;
                     width: 60%;
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
-                    animation: FadeInLandingInput .5s ease 1.35s 1 forwards;
+                    animation: FadeInLandingInput .73s ease 1.35s 1 forwards;
                     opacity: 0;
                     filter: blur(10px);
                     input {
@@ -45,7 +46,7 @@
                             font-family: 'Poppins';
                         }
                     }
-                    input:focus {
+                    .btn-search-bar, input:focus {
                         box-shadow: none !important;
                     }
                     .btn-search-bar {
@@ -129,5 +130,17 @@
     100% {
         opacity: 1;
         filter: blur(0px);
+    }
+}
+.route-loading-spinner {
+    height: 300px;
+    width: 300px;
+    color: white;
+}
+.confirmation-options {
+    @include flex-config(column, space-evenly, center);
+    * {
+        color: white;
+        font-family: 'Poppins';
     }
 }

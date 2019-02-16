@@ -22,6 +22,7 @@ class GoogleSuggest extends React.Component {
   handleSelectSuggest(suggest) {
 
     console.log(suggest);
+    console.log(parseAddressResponse([suggest]));
 
     if (parseAddressResponse([suggest])) {
 
@@ -31,7 +32,7 @@ class GoogleSuggest extends React.Component {
 
     else {
 
-        alert('Must be a New York City address.');
+        alert('Must be a valid New York City address.');
 
         this.setState({search: '', value: '', selected: false});
 
