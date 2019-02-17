@@ -1,9 +1,7 @@
 @import 'custom_mixins';
-@import url('https://fonts.googleapis.com/css?family=Montserrat:900|Nunito:700|Poppins');
+@import url('https://fonts.googleapis.com/css?family=Poppins:200');
 
-
-
-
+$primary-font: 'Poppins';
 
 html, body {
     height: 100vh;
@@ -15,10 +13,13 @@ html {
 body {
     overflow-y: scroll;
     margin: 0 auto;
-    background: linear-gradient(to right, #92FE9D, #00C9FF);
+    
 
-    animation: Gradient 15s ease infinite;
-    background-size: 400% 400%;
+    background: linear-gradient(to bottom right, #A6FFCB, #12D8FA, #1FA2FF);
+
+
+    //animation: Gradient 15s ease infinite;
+    //background-size: 400% 400%;
 
 
 }
@@ -40,7 +41,7 @@ body {
 }
 .primary-text {
     color: white;
-    font-family: 'Poppins';
+    font-family: $primary-font;
     //overflow: hidden;
     text-align: center;
     font-size: 800%;
@@ -84,3 +85,4 @@ h1.primary-text + div {
 
 
 @import 'landing';
+@import 'sidenavbar';

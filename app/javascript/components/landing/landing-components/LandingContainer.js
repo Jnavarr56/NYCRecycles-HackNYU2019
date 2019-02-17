@@ -7,7 +7,9 @@ import { resultsDeDupe } from '../../shared/array-dedupe/arrayDeDupe';
 import ConfirmationContainer from '../../shared/confirmation/ConfirmationContainer';
 import LandingRouteInfo from './LandingRouteInfo';
 import { formatSanitationData } from '../../shared/breackCamelCase/breakCamelCase';
-
+//import Navbar from '../../shared/navbar/Navbar';
+//import NavbarCircle from '../../shared/navbar/NavbarCircle';
+import SideNav from '../../shared/navbar/SideNav';
 
 
 const API_KEY = document.getElementById('go').getAttribute('data-src');
@@ -214,6 +216,9 @@ class LandingContainer extends React.Component {
         return(
 
             <React.Fragment>
+                {/*C*/}
+
+                <SideNav sessionStatus={false}/>
                 <div className={`container-fluid ${this.state.loadingStatus === 'fetching' || this.state.loadingStatus === 'retrieved' ? 'fade-in' : ''}`}>
                     <div className="row">
                         {this.state.loadingStatus === 'none' ? <PrimaryText includeIcon={{ exist: true, placement: 'before', fa: 'fas fa-recycle'}} otherClasses="" content=" NYCRecycles" shouldAnimate={!this.state.hasOccuredOnce ? true : false } loadingStatus={this.state.loadingStatus}/> : '' }
@@ -226,6 +231,7 @@ class LandingContainer extends React.Component {
                         {this.state.loadingStatus === 'retrieved' ? <LandingRouteInfo routeInfo={this.state} />  : '' }
                     </div>
                 </div>
+
             </React.Fragment>
 
         );

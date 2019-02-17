@@ -16,6 +16,8 @@
         @include flex-config(column, space-evenly, center);
         .row {
             width: 100%;
+            bottom: 5%;
+            position: relative;
             &:nth-child(1) {
                 height: 80%;
                 @include flex-config(column, center, center);
@@ -25,7 +27,7 @@
                 }
                 .input-group {
                     margin: 0;
-                    height: 60px;
+                    height: 65px;
                     width: 60%;
                     position: absolute;
                     top: 50%;
@@ -39,11 +41,11 @@
                         color: white;
                         border-color: white;
                         border-width: 2px;
-                        font-family: 'Poppins';
+                        font-family: $primary-font;
                         background-color: transparent;
                         &::placeholder {
                             color: white;
-                            font-family: 'Poppins';
+                            font-family: $primary-font;
                         }
                     }
                     .btn-search-bar, input:focus {
@@ -67,7 +69,7 @@
                         height: 100%;
                         border-style: none;
                         color: white;
-                        font-family: 'Poppins';
+                        font-family: $primary-font;
                         overflow: hidden;
                         &:not([disabled]):hover {
                             background-color: #5D86E4;
@@ -92,8 +94,11 @@
                         height: 100%;
                     }
                     .btn-search-bar:disabled {
-                        background-color: rgba(gainsboro, .5);
-                        color: white;
+                        .btn-search-text {
+                            &::before {
+                                width:0px;
+                            }
+                        }
                     }
                     .now-able {
                         animation: nowAble .75s ease 0s 2;
@@ -140,6 +145,22 @@
                     margin-top: 2.5%;
                     left: 50%;
                     transform: translate(-50%, 0%);
+                    font-family: $primary-font;
+                    box-shadow: none !important;
+                    div {
+                        box-shadow: none !important;
+                        color: #5D86E4;
+                        background-color: white;
+                        &:hover {
+                            * {
+                                color: white;
+                                background-color: #5D86E4;
+                            }
+                        }
+                        * {
+                            box-shadow: none !important;
+                        }
+                    }   
                 }
             }
             &:nth-child(2) {
@@ -164,7 +185,7 @@
     @include flex-config(column, space-evenly, none);
     * { 
         color: white;
-        font-family: 'Poppins';
+        font-family: $primary-font;
     }
     .confirmation-option {
         background-color: #5D86E4;
@@ -235,12 +256,17 @@
     height: 85%;
     width: 60%;
     .table-legend {
+        .btn-info {
+            position: absolute;
+            top: 10%;
+            font-family: $primary-font !important;
+        }
         height: 25%;
         width: 100%;
         @include flex-config(column, space-between, center);
         h5, h3 {
             color: white;
-            font-family: 'Poppins';
+            font-family: $primary-font;
         }
         h3 {
             margin-bottom: 2.5%;
@@ -266,7 +292,7 @@
                 font-size: 115%;
                 margin: 1% 0;
                 color: white;
-                font-family: 'Poppins';
+                font-family: $primary-font;
             }
         }
     }
@@ -275,7 +301,7 @@
         width: 100%;
         td, th {
             color: white;
-            font-family: 'Poppins';
+            font-family: $primary-font;
             text-align: center;
             vertical-align: middle;
         }
@@ -301,4 +327,19 @@
         }
         background:  rgba(#5D86E4, .30);
     }
+}
+.pitch-account-modal {
+    background-color:  rgba(#5D86E4, .65);
+    border-radius: 15px;
+    padding: 5% 4%;
+    p, ul, li, .btn {
+        font-family: $primary-font;
+        color: white;
+    }
+}
+.pitch-account-modal-close {
+    color: white;
+}
+.pitch-modal-trigger {
+    font-family: $primary-font;
 }

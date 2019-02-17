@@ -16,6 +16,7 @@ class LandingApp extends React.Component {
 
             <Switch>
                 <Route exact path="/" render={() => <LandingContainer {...this.props} /> } />
+                <Route exact path="/about" render={() => <LandingContainer {...this.props} /> } />
             </Switch>
 
         );

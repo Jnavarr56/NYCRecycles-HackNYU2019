@@ -21,6 +21,7 @@
 
   <body class="<%= controller_name %> <%= action_name %>">
     <div id="go" data-src=<%= ENV["GOOGLE_API_KEY"] %>></div>
+    <div id="news" data-src=<%= ENV["NEWS_API_KEY"] %>></div>
     <div id="app-mounting-point">
       <%= yield %>
     </div>

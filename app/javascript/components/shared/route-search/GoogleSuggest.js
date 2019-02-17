@@ -78,7 +78,7 @@ class GoogleSuggest extends React.Component {
                     <input
                     type="text"
                     value={value}
-                    className={`form-control ${this.state.selected ? 'selected-input' : ''}`}
+                    className="form-control selected-input"
                     placeholder="Your Address"
                     onChange={this.handleInputChange.bind(this)}
                     aria-describedby="button-addon4"
