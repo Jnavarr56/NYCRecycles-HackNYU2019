@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ConfirmationOption extends React.Component {
+class GuessLocationBtn extends React.Component {
     
     constructor(props) {
 
@@ -18,8 +18,8 @@ class ConfirmationOption extends React.Component {
 
         if (this.state.clickSonar.x) {
 
-            setTimeout(() =>  this.props.optionSelection(this.props.optionData), 500);
-            
+            setTimeout(() =>  this.props.searchFromInput(this.props.firstParam, this.props.secondParam), 500);
+
         }
 
     }
@@ -44,20 +44,20 @@ class ConfirmationOption extends React.Component {
 
 
 
-
     render() {
 
 
 
         return(
 
-            <button className="confirmation-option btn" onClick={this.handleClick}>
 
-                <span className="confirmation-btn-text">{this.props.optionData.formatted_address}</span>
+            <button onClick={this.handleClick} className="btn btn-search-bar" type="button">
 
-                {this.state.clickSonar.x ? <div className="click-sonar-confirmation" style={{ left: this.state.clickSonar.x, top: this.state.clickSonar.y}}></div> : '' }
+                <span className="btn-search-text">Guess My Location <i className="fas fa-location-arrow"></i></span>
 
-            </button>
+                {this.state.clickSonar.x ? <div className="click-sonar-location" style={{ left: this.state.clickSonar.x, top: this.state.clickSonar.y}}></div> : '' }
+
+            </button>   
 
         );
 
@@ -67,4 +67,4 @@ class ConfirmationOption extends React.Component {
 
 }
 
-export default ConfirmationOption;
+export default GuessLocationBtn;

@@ -17,11 +17,11 @@
         .row {
             width: 100%;
             &:nth-child(1) {
-                height: 35%;
-                @include flex-config(row, center, center);
+                height: 80%;
+                @include flex-config(column, center, center);
                 &.push-up {
                     position: relative;
-                    bottom: 0%;
+                    bottom: 5%;
                 }
                 .input-group {
                     margin: 0;
@@ -30,10 +30,10 @@
                     position: absolute;
                     top: 50%;
                     left: 50%;
-                    transform: translate(-50%, -50%);
-                    animation: FadeInLandingInput .73s ease 1.35s 1 forwards;
+                    transform: translate(-50%, -50%) scale(.65);
+                    animation: FadeInLandingInput .75s ease 1.35s 1 forwards;
                     opacity: 0;
-                    filter: blur(10px);
+                    filter: blur(100px);
                     input {
                         height: 100%;
                         color: white;
@@ -49,11 +49,26 @@
                     .btn-search-bar, input:focus {
                         box-shadow: none !important;
                     }
+                    input:focus {
+                        background-color: white;
+                        color: #5D86E4;
+                        &::placeholder {
+                            color: #5D86E4;
+                        }
+                    }
+                    input.selected-input {
+                        background-color: white !important;
+                        color: #5D86E4 !important;
+                        &::placeholder {
+                            color: #5D86E4 !important;
+                        }
+                    }
                     .btn-search-bar {
                         height: 100%;
                         border-style: none;
                         color: white;
                         font-family: 'Poppins';
+                        overflow: hidden;
                         &:not([disabled]):hover {
                             background-color: #5D86E4;
                             color: white;
@@ -75,6 +90,13 @@
                         transition: all 0.2s linear;
                         background: white;
                         height: 100%;
+                    }
+                    .btn-search-bar:disabled {
+                        background-color: rgba(gainsboro, .5);
+                        color: white;
+                    }
+                    .now-able {
+                        animation: nowAble .75s ease 0s 2;
                     }
                     .btn-search-bar:not([disabled]):hover::before, .btn-search-bar:not([disabled]):hover::after{
                         width: 0%;
@@ -115,7 +137,7 @@
                     top: 100%;
                     width: 60%;
                     margin: 0;
-                    margin-top: 4%;
+                    margin-top: 2.5%;
                     left: 50%;
                     transform: translate(-50%, 0%);
                 }
@@ -130,6 +152,7 @@
     100% {
         opacity: 1;
         filter: blur(0px);
+        transform: translate(-50%, -50%) scale(1);
     }
 }
 .route-loading-spinner {
@@ -138,9 +161,144 @@
     color: white;
 }
 .confirmation-options {
-    @include flex-config(column, space-evenly, center);
-    * {
+    @include flex-config(column, space-evenly, none);
+    * { 
         color: white;
         font-family: 'Poppins';
+    }
+    .confirmation-option {
+        background-color: #5D86E4;
+        position: relative;
+        padding: 2%;
+        margin: 2%;
+        background-repeat: repeat-y;
+        border-style: none;
+        &, span { 
+            transition: .5s ease;
+        }
+        overflow: hidden;
+    }
+    .btn:nth-child(odd) {
+        background-image: linear-gradient(rgba(white, 1),  rgba(white, 1));
+        background-size: 0% 0em;
+        background-position: 0 65%;
+        &:hover {
+            background-size: 100% 1em;
+            span {
+                color: #5D86E4;
+            }
+        }
+    }
+    .btn:nth-child(even) {
+        background-repeat: repeat-y;
+        background-image: linear-gradient(rgba(white, 1) 0%, rgba(white, 1) 100%);
+        background-size: 0% 0em;
+        background-position: 100% 0%;
+        &:hover {
+            background-size: 100% 1em;
+            span {
+                color: #5D86E4;
+            }
+        }
+    }
+}
+@keyframes nowAble {
+    50% {
+        background-color: #5D86E4;
+    }
+}
+.click-sonar-location {
+    height: 0;
+    width: 0;
+    opacity: .50;
+    border-radius: 100%;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    animation: ClickSonar .5s ease-out 0s 1;
+    background:  white;//linear-gradient(to left, #89fffd, #ef32d9);
+}
+.click-sonar-confirmation {
+    height: 0;
+    width: 0;
+    opacity: .50;
+    border-radius: 100%;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    animation: ClickSonar .5s ease-out 0s 1;
+    background:  #5D86E4;//linear-gradient(to left, #89fffd, #ef32d9);
+}
+@keyframes ClickSonar {
+    100% { height: calc(263.516px * 2); width: calc(263.516px * 2); opacity: 0; }
+}
+.collection-schedule-container {
+    @include flex-config(column, flex-end, center);
+    height: 85%;
+    width: 60%;
+    .table-legend {
+        height: 25%;
+        width: 100%;
+        @include flex-config(column, space-between, center);
+        h5, h3 {
+            color: white;
+            font-family: 'Poppins';
+        }
+        h3 {
+            margin-bottom: 2.5%;
+        }
+        .table-legend-header {
+            @include flex-config(row, center, center);
+            height: 25%;
+            width: 100%;
+            font-size: 80%;
+        }
+        .table-district-info {
+            @include flex-config(row, space-evenly, flex-end);
+            height: 25%;
+            width: 100%;
+            font-size: 115%;
+        }
+        .table-legend-legend {
+            @include flex-config(row, space-between, flex-end);
+            height: 15%;
+            width: 100%;
+            margin: 0 auto;
+            span {
+                font-size: 115%;
+                margin: 1% 0;
+                color: white;
+                font-family: 'Poppins';
+            }
+        }
+    }
+    table {
+        height: 60%;
+        width: 100%;
+        td, th {
+            color: white;
+            font-family: 'Poppins';
+            text-align: center;
+            vertical-align: middle;
+        }
+        td, th {
+            font-size: 150%;
+            i {
+                font-size: 105%;
+            }
+        }
+        tr {
+            border-width: 1px;
+        }
+        thead {
+            tr {
+                border-style: none;
+            }
+        }
+        tbody {
+            tr {
+                border-top-style: solid !important;
+                border-color: white !important;
+            }
+        }
+        background:  rgba(#5D86E4, .30);
     }
 }

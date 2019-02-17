@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ConfirmationOption extends React.Component {
+class SearchFromInputBtn extends React.Component {
     
     constructor(props) {
 
@@ -18,8 +18,8 @@ class ConfirmationOption extends React.Component {
 
         if (this.state.clickSonar.x) {
 
-            setTimeout(() =>  this.props.optionSelection(this.props.optionData), 500);
-            
+            setTimeout(() =>  this.props.searchFromInput(this.props.firstParam, this.props.secondParam), 500);
+
         }
 
     }
@@ -44,20 +44,24 @@ class ConfirmationOption extends React.Component {
 
 
 
-
     render() {
 
 
 
         return(
 
-            <button className="confirmation-option btn" onClick={this.handleClick}>
+            <button 
+                    disabled={this.props.shouldDisable} 
+                    onClick={this.handleClick} 
+                    className={this.props.classConfig} 
+                    type="button">
+            
+                <span className="btn-search-text">Go</span>
 
-                <span className="confirmation-btn-text">{this.props.optionData.formatted_address}</span>
-
-                {this.state.clickSonar.x ? <div className="click-sonar-confirmation" style={{ left: this.state.clickSonar.x, top: this.state.clickSonar.y}}></div> : '' }
-
+                {this.state.clickSonar.x ? <div className="click-sonar-location" style={{ left: this.state.clickSonar.x, top: this.state.clickSonar.y}}></div> : '' }
+            
             </button>
+
 
         );
 
@@ -67,4 +71,5 @@ class ConfirmationOption extends React.Component {
 
 }
 
-export default ConfirmationOption;
+export default SearchFromInputBtn;
+

@@ -57,16 +57,14 @@ export const parseAddressResponse = arr => {
 }
 
 export const constructGeoclientParams = obj => {
-
-    console.log(obj);
     
-    const geoClientparams = {};
+    const geoClientparams = { fullAddress: obj.formatted_address };
 
     for (let x = 0;  x < obj.address_components.length; x++) {
 
         if (obj.address_components[x].types.includes('street_number')) {
 
-            geoClientparams['house_number'] = Number(obj.address_components[x].long_name);
+            geoClientparams['house_number'] = obj.address_components[x].long_name;
         
         }
 

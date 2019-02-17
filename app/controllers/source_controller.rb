@@ -25,6 +25,7 @@ class SourceController < ApplicationController
 
         end
 
+        return_obj['full_address'] = collection_source_params['fullAddress'];
 
         render :json => return_obj
   

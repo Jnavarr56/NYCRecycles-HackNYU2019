@@ -17,6 +17,10 @@ body {
     margin: 0 auto;
     background: linear-gradient(to right, #92FE9D, #00C9FF);
 
+    animation: Gradient 15s ease infinite;
+    background-size: 400% 400%;
+
+
 }
 @keyframes Gradient {
     0% {
@@ -41,6 +45,9 @@ body {
     text-align: center;
     font-size: 800%;
     font-weight: bolder;
+    margin: 2.5%;
+    position: relative;
+    bottom: 10%;
     span, i {
         display: inline-block;
         opacity: 0;
@@ -48,6 +55,9 @@ body {
         transform: translate(0, -50%);
         animation: PrimaryTextFallIn .25s ease 0s 1 forwards;
     }
+}
+h1.primary-text + div {
+    bottom: 5.5%;
 }
 @keyframes PrimaryTextFallIn {
     100% {

@@ -5,6 +5,8 @@ import GoogleSuggest from '../../shared/route-search/GoogleSuggest';
 import { parseAddressResponse, constructGeoclientParams } from '../../shared/route-search/addressHelpers';
 import { resultsDeDupe } from '../../shared/array-dedupe/arrayDeDupe';
 import ConfirmationContainer from '../../shared/confirmation/ConfirmationContainer';
+import LandingRouteInfo from './LandingRouteInfo';
+import { formatSanitationData } from '../../shared/breackCamelCase/breakCamelCase';
 
 
 
@@ -36,8 +38,6 @@ class LandingContainer extends React.Component {
                         .then(function (response) {
 
                             if (parseAddressResponse(response.data.results)) {
-
-                                console.log(response.data);
 
                                 response.data.results = resultsDeDupe(response.data.results);
 
@@ -99,14 +99,12 @@ class LandingContainer extends React.Component {
 
                         setTimeout(()=> {
 
-
                             self.setState({
                                 
                                 loadingStatus: 'retrieved',
-                                hasOccuredOnce: true,
                                 fetchActions: {
                                     method: 'search',
-                                    data: response.data 
+                                    data: formatSanitationData(response.data)
                                 }
 
                             });
@@ -117,6 +115,8 @@ class LandingContainer extends React.Component {
 
                     })
                     .catch(function (error) {
+
+                        console.log(error);
 
                         alert('Sorry, there was an issue. Please try again later.');
 
@@ -139,7 +139,7 @@ class LandingContainer extends React.Component {
                     })
                     .then(function (response) {
 
-                        console.log(response);
+                        console.log(formatSanitationData(response.data));
 
                         setTimeout(()=> {
 
@@ -147,10 +147,9 @@ class LandingContainer extends React.Component {
                             self.setState({
                                 
                                 loadingStatus: 'retrieved',
-                                hasOccuredOnce: true,
                                 fetchActions: {
                                     method: 'locationServices',
-                                    data: response.data 
+                                    data: formatSanitationData(response.data)
                                 }
 
                             });
@@ -161,6 +160,8 @@ class LandingContainer extends React.Component {
 
                     })
                     .catch(function (error) {
+
+                        console.log(error);
 
                         alert('Sorry, there was an issue. Please try again later.');
 
@@ -191,7 +192,6 @@ class LandingContainer extends React.Component {
 
         console.log(option);
         
-        
         this.setState({
 
             loadingStatus: 'fetching',
@@ -215,8 +215,7 @@ class LandingContainer extends React.Component {
 
             <React.Fragment>
                 <div className={`container-fluid ${this.state.loadingStatus === 'fetching' || this.state.loadingStatus === 'retrieved' ? 'fade-in' : ''}`}>
-                    <div className={`row ${this.state.hasResults ? '' : 'push-up' }`}>
-
+                    <div className="row">
                         {this.state.loadingStatus === 'none' ? <PrimaryText includeIcon={{ exist: true, placement: 'before', fa: 'fas fa-recycle'}} otherClasses="" content=" NYCRecycles" shouldAnimate={!this.state.hasOccuredOnce ? true : false } loadingStatus={this.state.loadingStatus}/> : '' }
                         {this.state.loadingStatus === 'none' ? <GoogleSuggest searchFromInput={this.handleRouteCollectionRequest} /> : '' }
 
@@ -224,9 +223,8 @@ class LandingContainer extends React.Component {
 
                         {this.state.loadingStatus === 'confirmation' ? <ConfirmationContainer optionSelection={this.handleOptionSelection} geolocationData={this.state.fetchActions.data} /> : '' }
 
-                        {this.state.loadingStatus === 'retrieved' ? <h1>{this.state.fetchActions.data.sanitationRecyclingCollectionSchedule.replace('E', '')}</h1> : '' }
+                        {this.state.loadingStatus === 'retrieved' ? <LandingRouteInfo routeInfo={this.state} />  : '' }
                     </div>
-                        
                 </div>
             </React.Fragment>
 

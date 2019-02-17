@@ -3,6 +3,8 @@ import React from "react"
 import ReactGoogleMapLoader from "react-google-maps-loader"
 import ReactGooglePlacesSuggest from "react-google-places-suggest"
 import { parseAddressResponse } from './addressHelpers';
+import GuessLocationBtn from './GuessLocationBtn';
+import SearchFromInputBtn from './SearchFromInputBtn';
 
 const API_KEY = document.getElementById('go').getAttribute('data-src');
  	
@@ -21,9 +23,6 @@ class GoogleSuggest extends React.Component {
 
   handleSelectSuggest(suggest) {
 
-    console.log(suggest);
-    console.log(parseAddressResponse([suggest]));
-
     if (parseAddressResponse([suggest])) {
 
         this.setState({search: '', value: suggest.formatted_address, selected: true, searchConfig: suggest})
@@ -37,6 +36,10 @@ class GoogleSuggest extends React.Component {
         this.setState({search: '', value: '', selected: false});
 
     }
+
+  }
+
+  handleClickAnim() {
 
   }
 
@@ -75,14 +78,19 @@ class GoogleSuggest extends React.Component {
                     <input
                     type="text"
                     value={value}
-                    className="form-control"
+                    className={`form-control ${this.state.selected ? 'selected-input' : ''}`}
                     placeholder="Your Address"
                     onChange={this.handleInputChange.bind(this)}
                     aria-describedby="button-addon4"
                     />
                     <div className="input-group-append" id="button-addon4">
-                        <button onClick={() => this.props.searchFromInput(this.state, 'locationServices')} className="btn btn-search-bar" type="button"><span className="btn-search-text">Guess My Location <i className="fas fa-location-arrow"></i></span></button>
-                        <button disabled={this.state.selected ? false : true} onClick={() => this.props.searchFromInput(this.state, 'search')} className="btn btn-search-bar" type="button"><span className="btn-search-text">Go</span></button>
+                        <GuessLocationBtn searchFromInput={this.props.searchFromInput} firstParam={this.state} secondParam={'locationServices'} />
+                        <SearchFromInputBtn 
+                          shouldDisable={this.state.selected ? false : true} 
+                          searchFromInput={this.props.searchFromInput}  
+                          firstParam={this.state} 
+                          secondParam={'search'}
+                          classConfig={`btn btn-search-bar ${this.state.selected ? 'now-able' : '' }`}  />
                     </div>
                 </div>
               </ReactGooglePlacesSuggest>
@@ -99,4 +107,6 @@ GoogleSuggest.propTypes = {
 
 export default GoogleSuggest;
 
-{/*<input id="route-search" htype="text" className="form-control" placeholder="Your Address" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4" />*/}
+{/*<input id="route-search" htype="text" className="form-control" placeholder="Your Address" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4" />
+<button disabled={this.state.selected ? false : true} onClick={() => this.props.searchFromInput(this.state, 'search')} className={`btn btn-search-bar ${this.state.selected ? 'now-able' : '' }`} type="button"><span className="btn-search-text">Go</span></button>
+*/}
